@@ -28,6 +28,40 @@ app.route("/api/notes")
         res.json(data);
     })
 
+    // Adds a new note to the array inside the db.json file
+.post(function (req, res) {
+
+    let dataArray = path.join(__dirname, "./db.json");
+    let newNote = req.body;
+
+    let highID = 80;
+    for(let i = 0; i< data.length; i++) {
+        let singleNote = data[i];
+
+        if (singleNote.id > highID) {
+            highID = singleNote.id;
+        }
+    }
+    // Gives an ID to the newly created note  
+    newNote.id = highID + 1;
+    data.push(newNote);
+
+    // Adds new notes into db.json array
+    fs.writeFile(dataArray, JSON.stringify(data), (err) => 
+    err ?  console.log(err) : console.log("Note was saved!")
+    )
+
+    // Shows content of notes 
+    res.json(newNote);
+});
+
+
+
+
+
+
+
+
 
 // Logs that express is listening to port 5000
 app.listen(PORT, function () {
