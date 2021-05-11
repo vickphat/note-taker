@@ -52,10 +52,14 @@ To run this application, the following installs will be required:
 ## Usage:
 This project is intended to be used to write down notes such as a grocery list or contact information.
 
+The following link will take you to the deployed application:
+    
+* https://floating-anchorage-83905.herokuapp.com/
+
 ## Demo:
 The following link is a video that will showcase how to run the application.
 
-https://www.youtube.com/watch?v=C5RLvQy7fSg
+* https://www.youtube.com/watch?v=5PiK0Gw_-B8
 
 ## Questions: 
 If there are any questions that you may have, please contact me by the following:
