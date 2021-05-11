@@ -55,8 +55,9 @@ app.route("/api/notes")
         res.json(newNote);
     });
 
+// Deletes note from the db.json array
 app.delete("/api/notes/:id", function (req, res) {
-    
+
     let dataArray = path.join(__dirname, "./db.json");
     for (let i = 0; i < data.length; i++) {
         if (data[i].id == req.params.id) {
@@ -72,12 +73,6 @@ app.delete("/api/notes/:id", function (req, res) {
     // Shows content of notes 
     res.json(data);
 });
-
-
-
-
-
-
 
 // Logs that express is listening to port 5000
 app.listen(PORT, function () {
