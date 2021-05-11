@@ -51,7 +51,7 @@ app.route("/api/notes")
             err ? console.log(err) : console.log("Note was saved!")
         )
 
-        // Shows content of notes 
+        // Shows content of notes upon the save button press 
         res.json(newNote);
     });
 
@@ -70,7 +70,7 @@ app.delete("/api/notes/:id", function (req, res) {
         err ? console.log(err) : console.log("Note was deleted!")
     )
 
-    // Shows content of notes 
+    // Shows the removal of the saved note upon delete button press 
     res.json(data);
 });
 
