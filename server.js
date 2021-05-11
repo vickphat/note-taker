@@ -29,33 +29,49 @@ app.route("/api/notes")
     })
 
     // Adds a new note to the array inside the db.json file
-.post(function (req, res) {
+    .post(function (req, res) {
 
+        let dataArray = path.join(__dirname, "./db.json");
+        let newNote = req.body;
+
+        let noteID = 80;
+        for (let i = 0; i < data.length; i++) {
+            let singleNote = data[i];
+
+            if (singleNote.id > noteID) {
+                noteID = singleNote.id;
+            }
+        }
+        // Gives an ID to the newly created note  
+        newNote.id = noteID + 1;
+        data.push(newNote);
+
+        // Adds new notes into db.json array
+        fs.writeFile(dataArray, JSON.stringify(data), (err) =>
+            err ? console.log(err) : console.log("Note was saved!")
+        )
+
+        // Shows content of notes 
+        res.json(newNote);
+    });
+
+app.delete("/api/notes/:id", function (req, res) {
+    
     let dataArray = path.join(__dirname, "./db.json");
-    let newNote = req.body;
-
-    let highID = 80;
-    for(let i = 0; i< data.length; i++) {
-        let singleNote = data[i];
-
-        if (singleNote.id > highID) {
-            highID = singleNote.id;
+    for (let i = 0; i < data.length; i++) {
+        if (data[i].id == req.params.id) {
+            data.splice(i, 1);
+            break;
         }
     }
-    // Gives an ID to the newly created note  
-    newNote.id = highID + 1;
-    data.push(newNote);
-
-    // Adds new notes into db.json array
-    fs.writeFile(dataArray, JSON.stringify(data), (err) => 
-    err ?  console.log(err) : console.log("Note was saved!")
+    // Rewrites db.json file after delete
+    fs.writeFile(dataArray, JSON.stringify(data), (err) =>
+        err ? console.log(err) : console.log("Note was deleted!")
     )
 
     // Shows content of notes 
-    res.json(newNote);
+    res.json(data);
 });
-
-
 
 
 
