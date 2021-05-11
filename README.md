@@ -1,4 +1,4 @@
-# TEAM PROFILE GENERATOR
+# NOTE TAKER
 
 ![LICENSE](https://img.shields.io/badge/License-[MIT]-blue?style=for-the-badge&logo=appveyor.svg)<br>
 ![JS](https://img.shields.io/badge/JavaScript-64%25-yellow?style=for-the-badge&logo=appveyor.svg)<br>
